@@ -22,17 +22,5 @@ if($count+1 != $NCount){
     echo 'Это число не состоит из возрастающей последовательности!';
 }
 
-//function getCount($x, $N, $count)
-//{
-//    if($N%10 == $x){
-//        $count+=1;
-//    }
-//    if($N/10>1){
-//        return getCount($x, floor($N/10), $count);
-//    }
-//    echo 'Количество цифр, равных'.$x.': ' . $count;
-//}
-//echo getCount($x, $N, $count);
-
 
 
