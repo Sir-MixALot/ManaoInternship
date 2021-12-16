@@ -1,23 +1,10 @@
 <?php
 
-//Task 1.1
+//Task 1.5
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
-    }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+$N = 4556;
+echo 'Ваше число N = ' . $N . '</br>';
+for($i=$N; $i>0; $i=floor($i/=10)){
+    $M .= $i%10;
 }
-echo getCount($x, $N, $count);
-
-//
-
+echo 'Перевернутое число M = ' . $M . '</br>';
