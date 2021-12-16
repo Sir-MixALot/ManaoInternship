@@ -3,22 +3,34 @@
 //Task 1.4
 for($i=1000; $i<=9999; $i+=2){
     echo getIncrease($i, true);
+    echo getIncrease($i, false);
 }
 
-function getIncrease($i, $x)
+function getIncrease($i, $moreLess)
 {
-    
-    $increase = true;
-    for($j=$i; $j>=10; $j/=10){
-        $j = floor($j);
-        if($j%10<=floor(($j%100)/10)){
-            $increase = false;
-            break;
+
+
+    for($j=$i; $j>=10; floor($j/=10)){
+        if($moreLess){
+            $increase = true;
+            if($j%10<=floor(($j%100)/10)){
+                $increase = false;
+                break;
+            }
+        }else if(!$moreLess){
+            $decrease = true;
+            if($j%10>=floor(($j%100)/10)){
+                $decrease = false;
+                break;
+            }
         }
     }
     if($increase){
-        return $i . ' - возрастающая последовательность</br>';
+        return $i . 'возрастающая</br>';
+    }else if($decrease){
+        return $i . 'убывающая</br>';
     }
+
 }
 
 
