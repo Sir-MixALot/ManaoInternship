@@ -1,18 +1,25 @@
 <?php
 
-//Task 1.1 v2
+//Task 1.3
 
-$x = 5;
-$N = 5455;
+$N = 1235;
+$count = 0;
 echo 'Ваше число: ' .$N. '</br>';
+$NCount  = ceil(log10($N));
+if(floor($N/10)==0){
+    echo "Введите число больше одной цифры";
+}else{
+    for($i=$N; $i>=1; $i/=10){
+        if(floor($i%10)>floor(($i%100)/10)){
+            $count+=1;
+        }
+    }
+}
 
-for($i=$N; $i=0; $i=$i/10){
-    $count = 0;
-    echo $i;
-//    if($i%10==$x){
-//        $count+=1;
-//    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+if($count+1 != $NCount){
+    echo 'Это число состоит из возрастающей последовательности!';
+}else{
+    echo 'Это число не состоит из возрастающей последовательности!';
 }
 
 //function getCount($x, $N, $count)
@@ -27,5 +34,5 @@ for($i=$N; $i=0; $i=$i/10){
 //}
 //echo getCount($x, $N, $count);
 
-//
+
 
