@@ -1,18 +1,27 @@
 <?php
 
 //Task 1.4
+for($i=1000; $i<=9999; $i+=2){
+    echo getIncrease($i, true);
+}
 
-for($i=1000; $i<=9999; $i++){
-    if($i%2 == 0){
-        $first = floor($i/1000);
-        $sec = floor(($i%1000)/100);
-        $third = floor(($i%100)/10);
-        $fourth = $i%10;
-        if($first<$sec && $sec<$third && $third<$fourth){
-            echo $i . ' - возрастающая последовательность </br>';
-        }else if($first>$sec && $sec>$third && $third>$fourth){
-            echo $i . ' - убывающая последовательность </br>';
+function getIncrease($i, $x)
+{
+    
+    $increase = true;
+    for($j=$i; $j>=10; $j/=10){
+        $j = floor($j);
+        if($j%10<=floor(($j%100)/10)){
+            $increase = false;
+            break;
         }
     }
+    if($increase){
+        return $i . ' - возрастающая последовательность</br>';
+    }
 }
+
+
+
+
 
