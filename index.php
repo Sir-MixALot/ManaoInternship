@@ -2,18 +2,13 @@
 
 //Task 1.14
 $count = 0;
-for($i=1; $count<10; $i+=2){
+for($i=1; $count<15; $i+=2){
     if(isSimpleNumber($i)){
-        for($j=$i+2; $count<10; $j+=2){
-            if(isSimpleNumber($j)){
+            if(isSimpleNumber($i+2)){
                 $count++;
-                echo $i . '+' . $j . '</br>';
-                break;
-            }else{
-                break;
+                echo $i . '+' . ($i+2) . '</br>';
             }
         }
-    }
 }
 
 function isSimpleNumber($n)
