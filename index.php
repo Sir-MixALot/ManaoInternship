@@ -1,36 +1,25 @@
 <?php
 
-//Task 1.12
+//Task 1.13
 
-$N = 13;
-if($N>0){
-    if(isSimpleNumber($N)){
-        echo $N . ' явл простым числом';
+$N = 1323;
+$NCount = ceil(log10($N));
+if($NCount%2==0){
+    if(isSymmetric($N, $NCount)){
+        echo $N . ' является симмеричным';
     }else{
-        echo $N . ' не явл простым числом';
+        echo $N . ' не является симмеричным';
     }
 }else{
-    echo 'Ноль не является простым числом';
+    echo 'Количество цифр в числе ' .$N. ' нечетное';
 }
 
-function isSimpleNumber($n)
+function isSymmetric($n, $count)
 {
-    $simple = true;
-
-
-    $SquareRoot = floor(sqrt($n));
-    for ($i = 2; $i <= $SquareRoot; $i++)
-    {
-        if ($n % $i == 0)
-        {
-            $simple = False;
-            break;
-        }
-    }
-    if ($simple){
+    $devider = 10 ** ($count/2);
+    if($n%$devider == floor($n/$devider)){
         return true;
     }else{
         return false;
     }
-
 }
