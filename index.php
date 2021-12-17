@@ -1,20 +1,36 @@
 <?php
 
-//Task 1.11
+//Task 1.12
 
-$m = 20;
-$n = 10;
-if(floor($n/10)==0){
-    echo "Введите число больше одной цифры";
+$N = 13;
+if($N>0){
+    if(isSimpleNumber($N)){
+        echo $N . ' явл простым числом';
+    }else{
+        echo $N . ' не явл простым числом';
+    }
 }else{
-    for($i=$n; $m>0;  $i++){
-        $m--;
-        $sum = 0;
-        for($j=$i; $j>0; floor($j/=10)){
-            $sum += $j%10;
-        }
-        if($i%$sum==0){
-            echo $i . '</br>';
+    echo 'Ноль не является простым числом';
+}
+
+function isSimpleNumber($n)
+{
+    $simple = true;
+
+
+    $SquareRoot = floor(sqrt($n));
+    for ($i = 2; $i <= $SquareRoot; $i++)
+    {
+        if ($n % $i == 0)
+        {
+            $simple = False;
+            break;
         }
     }
+    if ($simple){
+        return true;
+    }else{
+        return false;
+    }
+
 }
