@@ -1,23 +1,20 @@
 <?php
 
-//Task 1.1
+//Task 1.11
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
+$m = 20;
+$n = 10;
+if(floor($n/10)==0){
+    echo "Введите число больше одной цифры";
+}else{
+    for($i=$n; $m>0;  $i++){
+        $m--;
+        $sum = 0;
+        for($j=$i; $j>0; floor($j/=10)){
+            $sum += $j%10;
+        }
+        if($i%$sum==0){
+            echo $i . '</br>';
+        }
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
 }
-echo getCount($x, $N, $count);
-
-//
-
