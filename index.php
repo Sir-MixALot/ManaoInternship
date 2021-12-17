@@ -1,25 +1,39 @@
 <?php
 
-//Task 1.13
-
-$N = 1323;
-$NCount = ceil(log10($N));
-if($NCount%2==0){
-    if(isSymmetric($N, $NCount)){
-        echo $N . ' является симмеричным';
-    }else{
-        echo $N . ' не является симмеричным';
+//Task 1.14
+$count = 0;
+for($i=1; $count<10; $i+=2){
+    if(isSimpleNumber($i)){
+        for($j=$i+2; $count<10; $j+=2){
+            if(isSimpleNumber($j)){
+                $count++;
+                echo $i . '+' . $j . '</br>';
+                break;
+            }else{
+                break;
+            }
+        }
     }
-}else{
-    echo 'Количество цифр в числе ' .$N. ' нечетное';
 }
 
-function isSymmetric($n, $count)
+function isSimpleNumber($n)
 {
-    $devider = 10 ** ($count/2);
-    if($n%$devider == floor($n/$devider)){
+    $simple = true;
+
+
+    $SquareRoot = floor(sqrt($n));
+    for ($i = 2; $i <= $SquareRoot; $i++)
+    {
+        if ($n % $i == 0)
+        {
+            $simple = False;
+            break;
+        }
+    }
+    if ($simple){
         return true;
     }else{
         return false;
     }
+
 }
