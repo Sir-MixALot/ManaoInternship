@@ -3,18 +3,22 @@
 //Task 1.6
 
 for($i=1000; $i<=9999; $i++){
-    for($j = $i; $j>0; $j=floor($j/=10)){
-        $count = 0;
-        if($j%10 == 0 || $j%10 == 2 || $j%10 == 3 || $j%10 == 7){
+    $correct = true;
+    for($j=$i; $j>=1; floor($j/=10)){
 
-            $count+=1;
-        }
-        echo $count. "/";
-        if($count+1 == 4){
-            echo $i. "</br>";
+        switch ($j%10){
+            case 0:
+            case 2:
+            case 3:
+            case 7:
+                break;
+            default:
+                $correct = false;
+                break;
         }
     }
-
-
+    if($correct){
+        echo $i . '</br>';
+    }
 }
 
