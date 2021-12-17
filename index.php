@@ -1,23 +1,29 @@
 <?php
 
-//Task 1.1
+//Task 1.7
 
-$x = 5;
-$N = 5455;
-$count = 0;
+$N = 3173;
 echo 'Ваше число: ' .$N. '</br>';
+if(floor($N/10)==0){
+    echo "Введите число больше одной цифры";
+}else{
+    $equal = false;
+    for($i = $N; $i>10; floor($i/=10)){
 
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
+        for($j = $i; $j>10; floor($j/=10)){
+            if($i%10 == floor(($j%100)/10)){
+                $equal = true;
+                break;
+            }
+        }
+        if($equal){
+            break;
+        }
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
+    if($equal){
+        echo 'Число содержит две одинаковые цифры';
+    }else{
+        echo 'Число не содержит одинаковых цифр';
     }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+
 }
-echo getCount($x, $N, $count);
-
-//
-
