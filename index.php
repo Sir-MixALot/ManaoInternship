@@ -1,23 +1,15 @@
 <?php
 
-//Task 1.1
+//Task 1.9
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
-    }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+$N = 5;
+echo $N . " - ваше число</br>";
+$NCount  = ceil(log10($N));
+$square =  $N**2;
+echo $square . " - квадрат вашего числа</br>";
+if($square%(10**$NCount) == $N){
+    echo 'Число является автоморфным';
+}else{
+    echo 'Число не является автоморфным';
 }
-echo getCount($x, $N, $count);
-
-//
 
