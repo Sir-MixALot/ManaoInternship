@@ -2,8 +2,8 @@
 
 //Task 1.17
 
-$N = 10;
-$M = 15;
+$N = 65;
+$M = 25;
 echo $N . ' ваше первое число</br>';
 echo $M . ' ваше второе число</br>';
 if(gettype($N) == "double" || gettype($M) == "double"){
@@ -11,8 +11,6 @@ if(gettype($N) == "double" || gettype($M) == "double"){
 }else if($N<>0 && $M<>0){
     if($N<0 || $M<0){
         echo 'Введите положительные числа';
-    }else if ($N>=$M){
-        echo 'Первое число должно быть меньше второго';
     }else{
         getNOD($N, $M);
     }
@@ -22,8 +20,14 @@ if(gettype($N) == "double" || gettype($M) == "double"){
 
 function getNOD($n, $m)
 {
-    for($i=$n; $i>=1; $i--){
-        if(($n%$i==0) && ($m%$i==0)){
+    $x = $n;
+    $y = $m;
+    if($n<$m){
+        $x = $m;
+        $y = $n;
+    }
+    for($i=$x; $i>=1; $i--){
+        if(($x%$i==0) && ($y%$i==0)){
             echo 'НОД ваших чисел: ' . $i . '</br>';
             break;
         }
