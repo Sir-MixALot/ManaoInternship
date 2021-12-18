@@ -2,8 +2,8 @@
 
 //Task 1.19
 
-$N = 65;
-$M = 25;
+$N = 11;
+$M = 13;
 echo $N . ' ваше первое число</br>';
 echo $M . ' ваше второе число</br>';
 if(gettype($N) == "double" || gettype($M) == "double"){
@@ -27,20 +27,14 @@ function getNOK($n, $m)
         $y = $n;
     }
     $nok = 1;
-
-}
-
-function getDeviders($n)
-{
-    $half = floor($n/2);
-    $sum = 0;
-    for($j = 1; $j <= $half; $j++){
-        if ($n % $j == 0)
-        {
-            $sum += $j;
+    for($i = $x;true;$i++){
+        if($i%$x==0){
+            if($i%$y==0){
+                $nok *=$i;
+                break;
+            }
         }
     }
-    if($sum == $n){
-        echo $i . '/';
-    }
+    echo $nok;
 }
+
