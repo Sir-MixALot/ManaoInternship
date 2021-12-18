@@ -1,36 +1,28 @@
 <?php
 
-//Task 1.12
+//Task 1.15
 
-$N = 13;
-if($N>0){
-    if(isSimpleNumber($N)){
-        echo $N . ' явл простым числом';
-    }else{
-        echo $N . ' не явл простым числом';
-    }
+$N = -15;
+echo $N . ' ваше число</br>';
+if(gettype($N) == "double"){
+    echo 'Введите целое число';
+}else if($N<>0){
+    getDeviders($N);
 }else{
-    echo 'Ноль не является простым числом';
+    echo 'Введите число, отличное от нуля';
 }
 
-function isSimpleNumber($n)
+function getDeviders($n)
 {
-    $simple = true;
-
-
-    $SquareRoot = floor(sqrt($n));
-    for ($i = 2; $i <= $SquareRoot; $i++)
+    $m=1;
+    if($n<0){
+        $m = -1;
+    }
+    for ($i = 1; $i <= abs($n); $i++)
     {
         if ($n % $i == 0)
         {
-            $simple = False;
-            break;
+            echo ($i*$m) . ' / ';
         }
     }
-    if ($simple){
-        return true;
-    }else{
-        return false;
-    }
-
 }
