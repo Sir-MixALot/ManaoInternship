@@ -1,6 +1,6 @@
 <?php
 
-//Task 1.17
+//Task 1.19
 
 $N = 65;
 $M = 25;
@@ -12,13 +12,13 @@ if(gettype($N) == "double" || gettype($M) == "double"){
     if($N<0 || $M<0){
         echo 'Введите положительные числа';
     }else{
-        getNOD($N, $M);
+        getNOK($N, $M);
     }
 }else{
     echo 'Введите числа, отличные от нуля';
 }
 
-function getNOD($n, $m)
+function getNOK($n, $m)
 {
     $x = $n;
     $y = $m;
@@ -26,10 +26,21 @@ function getNOD($n, $m)
         $x = $m;
         $y = $n;
     }
-    for($i=$x; $i>=1; $i--){
-        if(($x%$i==0) && ($y%$i==0)){
-            echo 'НОД ваших чисел: ' . $i . '</br>';
-            break;
+    $nok = 1;
+
+}
+
+function getDeviders($n)
+{
+    $half = floor($n/2);
+    $sum = 0;
+    for($j = 1; $j <= $half; $j++){
+        if ($n % $j == 0)
+        {
+            $sum += $j;
         }
+    }
+    if($sum == $n){
+        echo $i . '/';
     }
 }
