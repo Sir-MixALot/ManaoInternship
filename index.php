@@ -14,6 +14,7 @@ if(gettype($N) == "double"){
 
 function getDeviders($n)
 {
+    $count = 0;
     $m=1;
     if($n<0){
         $m = -1;
@@ -22,7 +23,9 @@ function getDeviders($n)
     {
         if ($n % $i == 0)
         {
+            $count++;
             echo ($i*$m) . ' / ';
         }
     }
+    echo '</br> Количество всех делителей: '. $count;
 }
