@@ -1,9 +1,9 @@
 <?php
 
-//Task 1.16
+//Task 1.17
 
-$N = 1;
-$M = 10000;
+$N = 10;
+$M = 15;
 echo $N . ' ваше первое число</br>';
 echo $M . ' ваше второе число</br>';
 if(gettype($N) == "double" || gettype($M) == "double"){
@@ -14,26 +14,18 @@ if(gettype($N) == "double" || gettype($M) == "double"){
     }else if ($N>=$M){
         echo 'Первое число должно быть меньше второго';
     }else{
-        checkPerfect($N, $M);
+        getNOD($N, $M);
     }
 }else{
     echo 'Введите числа, отличные от нуля';
 }
 
-function checkPerfect($n, $m)
+function getNOD($n, $m)
 {
-    for ($i = $n; $i < $m; $i++)
-    {
-        $half = floor($i/2);
-        $sum = 0;
-        for($j = 1; $j <= $half; $j++){
-            if ($i % $j == 0)
-            {
-                $sum += $j;
-            }
-        }
-        if($sum == $i){
-            echo $i . '/';
+    for($i=$n; $i>=1; $i--){
+        if(($n%$i==0) && ($m%$i==0)){
+            echo 'НОД ваших чисел: ' . $i . '</br>';
+            break;
         }
     }
 }
