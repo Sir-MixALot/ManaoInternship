@@ -2,7 +2,7 @@
 
 //Task 1.24
 
-$N = 256;
+$N = 1569745;
 echo $N . ' - ваше число</br>';
 $binar = 1;
 $dechex = '';
@@ -29,8 +29,8 @@ function getBinar($N, $M, $count)
 
 function getDechex($N, $m)
 {
+    if($N>0){
 
-    if($N>=16){
         switch ($N%16){
             case 10: $m = 'A' . $m; break;
             case 11: $m = 'B' . $m; break;
@@ -40,12 +40,14 @@ function getDechex($N, $m)
             case 15: $m = 'F' . $m; break;
             default: $m = $N%16 . $m;
         }
-        getDechex(floor($N/16), $m);
 
+        getDechex(floor($N/16), $m);
     }else{
-        $m = $N%16 . $m;
+
         echo $m;
+
     }
+
 
 }
 
