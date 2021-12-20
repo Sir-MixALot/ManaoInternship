@@ -1,23 +1,45 @@
 <?php
 
-//Task 1.1
+//Task 1.22
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
-    }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+$N = 48;
+echo $N . ' ваше число</br>';
+if(checkSimple($N)){
+    echo '1/'.$N;
+}else{
+    getFactors($N);
 }
-echo getCount($x, $N, $count);
 
-//
 
+function getFactors($n)
+{
+    $maxDevider = 0;
+    for($i=$n-1;$i>=2;$i--){
+        if($n%$i==0){
+            echo $n/$i.'/';
+            $maxDevider = $i;
+            break;
+        }
+    }
+    if(!checkSimple($maxDevider)){
+        getFactors($maxDevider);
+    }else{
+        echo $maxDevider.'/';
+    }
+}
+
+function checkSimple($n)
+{
+    $simple = true;
+    $half = floor($n/2);
+    for ($i = 2; $i <= $half; $i++)
+    {
+        if ($n % $i == 0)
+        {
+            $simple = False;
+            break;
+        }
+    }
+    return $simple;
+
+}
