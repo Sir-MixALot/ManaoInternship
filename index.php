@@ -1,23 +1,51 @@
 <?php
 
-//Task 1.1
+//Task 1.24
 
-$x = 5;
-$N = 5455;
+$N = 256;
+echo $N . ' - ваше число</br>';
+$binar = 1;
+$dechex = '';
 $count = 0;
-echo 'Ваше число: ' .$N. '</br>';
+getBinar($N, $binar, $count);
+getDechex($N, $dechex);
 
-function getCount($x, $N, $count)
+function getBinar($N, $M, $count)
 {
-    if($N%10 == $x){
-        $count+=1;
+    if($N>1){
+        if($N%2==0){
+            $M=$M/10;
+            $count++;
+        }else{
+            $M=$M/10+1;
+            $count++;
+        }
+        getBinar(floor($N/2), $M, $count);
+    }else{
+        $M=$M/10+1;
+        echo floor($M*(10**$count)) . ' в двоичной системе счисления</br>';
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
 }
-echo getCount($x, $N, $count);
 
-//
+function getDechex($N, $m)
+{
+
+    if($N>=16){
+        switch ($N%16){
+            case 10: $m = 'A' . $m; break;
+            case 11: $m = 'B' . $m; break;
+            case 12: $m = 'C' . $m; break;
+            case 13: $m = 'D' . $m; break;
+            case 14: $m = 'E' . $m; break;
+            case 15: $m = 'F' . $m; break;
+            default: $m = $N%16 . $m;
+        }
+        getDechex(floor($N/16), $m);
+
+    }else{
+        $m = $N%16 . $m;
+        echo $m;
+    }
+
+}
 
