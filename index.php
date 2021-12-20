@@ -11,7 +11,7 @@ if(abs($N)!=$N || abs($M)!=$M){
 }else{
     $min = min($N, $M);
     $max = max($N, $M);
-    checkCoprimeNumbers(abs($min), abs($max));
+    checkCoprimeNumbers($min, $max);
 }
 
 function checkCoprimeNumbers($n, $m)
