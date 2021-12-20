@@ -1,23 +1,49 @@
 <?php
 
-//Task 1.1
+//Task 1.27
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
+$N = 12;
+$M = 21;
+echo $N . ' ваше первое число</br>';
+echo $M . ' ваше второе число</br>';
+$min = min($N, $M);
+$max = max($N, $M);
 
-function getCount($x, $N, $count)
+getDevidersSum($min, $max);
+
+function getDevidersSum($n, $m)
 {
-    if($N%10 == $x){
-        $count+=1;
+    $maxSum = 0;
+    $number = 0;
+    for($i=$n; $i<=$m;$i++){
+        $sum = 0;
+        for($y = 1; $y <= $i; $y++){
+            if ($i % $y == 0)
+            {
+                if(isSimple($y)){
+                    $sum += $y;
+                }
+            }
+        }
+        if($sum>$maxSum){
+            $maxSum = $sum;
+            $number = $i;
+        }
+        echo $i . '(' . $sum . ') /';
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+    echo '</br>' . $number . '(max sum: ' . $maxSum . ')';
 }
-echo getCount($x, $N, $count);
-
-//
-
+function isSimple($n)
+{
+    $simple = true;
+    $SquareRoot = floor(sqrt($n));
+    for ($i = 2; $i <= $SquareRoot; $i++)
+    {
+        if ($n % $i == 0)
+        {
+            $simple = False;
+            break;
+        }
+    }
+    return $simple;
+}
