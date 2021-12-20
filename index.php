@@ -1,40 +1,48 @@
 <?php
 
-//Task 1.19
+//Task 1.20
 
-$N = 11;
-$M = 13;
+$N = 12;
+$M = 21;
 echo $N . ' ваше первое число</br>';
 echo $M . ' ваше второе число</br>';
-if(gettype($N) == "double" || gettype($M) == "double"){
-    echo 'Введите целые числа';
-}else if($N<>0 && $M<>0){
-    if($N<0 || $M<0){
-        echo 'Введите положительные числа';
-    }else{
-        getNOK($N, $M);
-    }
-}else{
-    echo 'Введите числа, отличные от нуля';
-}
+$min = min($N, $M);
+$max = max($N, $M);
 
-function getNOK($n, $m)
+getDevidersSum($min, $max);
+
+function getDevidersSum($n, $m)
 {
-    $x = $n;
-    $y = $m;
-    if($n<$m){
-        $x = $m;
-        $y = $n;
-    }
-    $nok = 1;
-    for($i = $x;true;$i++){
-        if($i%$x==0){
-            if($i%$y==0){
-                $nok *=$i;
-                break;
+    $maxSum = 0;
+
+    for($i=$n; $i<=$m;$i++){
+        $sum = 0;
+        for($y = 1; $y <= $i; $y++){
+            if ($i % $y == 0)
+            {
+                $sum += $y;
             }
         }
+        if($sum>$maxSum){
+            $maxSum = $sum;
+        }
+        echo $i . '(' . $sum . ') /';
     }
-    echo $nok;
+    getNumberWithMaxSum($n, $m, $maxSum);
 }
 
+function getNumberWithMaxSum($n, $m, $ms)
+{
+    for($i=$n; $i<=$m;$i++){
+        $sum = 0;
+        for($y = 1; $y <= $i; $y++){
+            if ($i % $y == 0)
+            {
+                $sum += $y;
+            }
+        }
+        if($sum == $ms){
+            echo '</br>'. $i .  '(max sum: ' . $sum . ') /';
+        }
+    }
+}
