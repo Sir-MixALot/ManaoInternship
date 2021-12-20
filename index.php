@@ -1,48 +1,32 @@
 <?php
 
-//Task 1.20
+//Task 1.21
 
-$N = 12;
+$N = 13;
 $M = 21;
 echo $N . ' ваше первое число</br>';
 echo $M . ' ваше второе число</br>';
-$min = min($N, $M);
-$max = max($N, $M);
-
-getDevidersSum($min, $max);
-
-function getDevidersSum($n, $m)
-{
-    $maxSum = 0;
-
-    for($i=$n; $i<=$m;$i++){
-        $sum = 0;
-        for($y = 1; $y <= $i; $y++){
-            if ($i % $y == 0)
-            {
-                $sum += $y;
-            }
-        }
-        if($sum>$maxSum){
-            $maxSum = $sum;
-        }
-        echo $i . '(' . $sum . ') /';
-    }
-    getNumberWithMaxSum($n, $m, $maxSum);
+if(abs($N)!=$N || abs($M)!=$M){
+    echo 'Введите положительные числа';
+}else{
+    $min = min($N, $M);
+    $max = max($N, $M);
+    checkCoprimeNumbers(abs($min), abs($max));
 }
 
-function getNumberWithMaxSum($n, $m, $ms)
+function checkCoprimeNumbers($n, $m)
 {
-    for($i=$n; $i<=$m;$i++){
-        $sum = 0;
-        for($y = 1; $y <= $i; $y++){
-            if ($i % $y == 0)
-            {
-                $sum += $y;
+    $coprime = true;
+    for($i=$n; $i>=2; $i--){
+        if($n%$i==0){
+            if($m%$i==0){
+                $coprime = false;
+                echo 'Числа не взаимно простые';
+                break;
             }
         }
-        if($sum == $ms){
-            echo '</br>'. $i .  '(max sum: ' . $sum . ') /';
-        }
+    }
+    if($coprime){
+        echo 'Числа взаимно простые';
     }
 }
