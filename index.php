@@ -14,7 +14,7 @@ getDevidersSum($min, $max);
 function getDevidersSum($n, $m)
 {
     $maxSum = 0;
-
+    $number = 0;
     for($i=$n; $i<=$m;$i++){
         $sum = 0;
         for($y = 1; $y <= $i; $y++){
@@ -25,24 +25,9 @@ function getDevidersSum($n, $m)
         }
         if($sum>$maxSum){
             $maxSum = $sum;
+            $number = $i;
         }
         echo $i . '(' . $sum . ') /';
     }
-    getNumberWithMaxSum($n, $m, $maxSum);
-}
-
-function getNumberWithMaxSum($n, $m, $ms)
-{
-    for($i=$n; $i<=$m;$i++){
-        $sum = 0;
-        for($y = 1; $y <= $i; $y++){
-            if ($i % $y == 0)
-            {
-                $sum += $y;
-            }
-        }
-        if($sum == $ms){
-            echo '</br>'. $i .  '(max sum: ' . $sum . ') /';
-        }
-    }
+    echo '</br>' . $number . '(max sum: ' . $maxSum . ')';
 }
