@@ -2,28 +2,31 @@
 
 //Task 1.24
 
-$N = 1569745;
+$N = 128;
 echo $N . ' - ваше число</br>';
 $binar = 1;
+$out = 0;
 $dechex = '';
-$count = 0;
-getBinar($N, $binar, $count);
+for($i=$binar; $i<=$N; $i*=2){
+    $binar = $i;
+}
+getBinar($N, $binar, $out);
 getDechex($N, $dechex);
 
-function getBinar($N, $M, $count)
+function getBinar($n, $b, $o)
 {
-    if($N>1){
-        if($N%2==0){
-            $M=$M/10;
-            $count++;
+    if($n>=$b){
+        $o = ($o*10)+1;
+        if(($n-$b)>0){
+            getBinar($n-$b,$b/2,$o);
         }else{
-            $M=$M/10+1;
-            $count++;
+            $o*=10**(log($n, 2));
+            echo $o . '</br>';
         }
-        getBinar(floor($N/2), $M, $count);
+
     }else{
-        $M=$M/10+1;
-        echo floor($M*(10**$count)) . ' в двоичной системе счисления</br>';
+        $o *=10;
+        getBinar($n,$b/2,$o);
     }
 }
 
