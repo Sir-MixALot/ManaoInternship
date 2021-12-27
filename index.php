@@ -1,9 +1,9 @@
 <?php
 //task 1.29
 
-$n=270;
-$m=150;
-$k=6;
+$n=12345678;
+$m=20;
+$k=33;
 $count = 0;
 $changeCounter=0;
 $numberPrototype=0;
@@ -16,16 +16,20 @@ for($i=$n;$m>0;$i++){
     $numberPrototype=$i;
     $nCount = ceil(log($numberPrototype, 10));
     if($nCount>1){
-        $increaseNumber=getIncreaseNumber($numberPrototype);
-        $increaseNumberPrototype=$increaseNumber;
-        for($j=$changeCounter;true;$j=checkChangedSum($increaseNumberPrototype,$k,$changeCounter)){
-            if($j==-1){
-                $count++;
-                echo $numberPrototype.' - можно</br>';
-                break;
-            }else if($j+1==ceil(log($numberPrototype,10))){
-                echo $numberPrototype.' - нельзя</br>';
-                break;
+        if(getNumberSum($numberPrototype)==$k){
+            echo $numberPrototype . ' - нельзя</br>';
+        }else{
+            $increaseNumber=getIncreaseNumber($numberPrototype);
+            $increaseNumberPrototype=$increaseNumber;
+            for($j=$changeCounter;true;$j=checkChangedSum($increaseNumberPrototype,$k,$changeCounter)){
+                if($j==-1){
+                    $count++;
+                    echo $numberPrototype.' - можно</br>';
+                    break;
+                }else if($j+1==ceil(log($numberPrototype,10))){
+                    echo $numberPrototype.' - нельзя</br>';
+                    break;
+                }
             }
         }
     }else{
