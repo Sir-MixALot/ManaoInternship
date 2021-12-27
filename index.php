@@ -1,7 +1,7 @@
 <?php
 //task 1.29
 
-$n=197;
+$n=246;
 $m=10;
 $k=6;
 $changeCounter=0;
@@ -32,7 +32,6 @@ for($i=$n;$m>0;$i++){
 }
 
 
-
 function checkChangedSum($number, $k, $kCount)
 {
     global $numberPrototype, $increaseNumberPrototype;
@@ -40,7 +39,12 @@ function checkChangedSum($number, $k, $kCount)
         if(ceil(log($increaseNumberPrototype,10))>1){
             $changedNumber=(floor($increaseNumberPrototype/(10**$kCount))*(10**(abs(1-$kCount))))+$increaseNumberPrototype%(10**(abs(1-$kCount)));
             if($number%10>$k && $kCount==0){
-                return ceil(log($numberPrototype,10))-1;
+                if(ceil(log($number,10))>1){
+                    return checkChangedSum(floor($number/10),$k , $kCount);
+                }else{
+                    $increaseNumberPrototype = floor($increaseNumberPrototype/10);
+                }
+                
             }else if($number%10>$k){
                 if(ceil(log($number,10))>1){
                     return checkChangedSum(floor($number/10),$k , $kCount);
