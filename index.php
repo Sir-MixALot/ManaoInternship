@@ -1,23 +1,26 @@
 <?php
 
-//Task 1.1
+//Task 2.1
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
+$a = [1,0,2,3,-2,5,8,6,-9,7,1,6];
+$count=0;
+$sum=0;
+$b = [];
+for($i=0;$i<=count($a);$i++){
+    echo $a[$i].'/';
+    if($a[$i]<0){
+        $b[]=$i;
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
+    
 }
-echo getCount($x, $N, $count);
 
-//
+for($j=0;$j<$b[0];$j++){
+    $count++;
+}
 
+for($y=end($b)+1;$y<count($a);$y++){
+    $sum+=$a[$y];
+}
+
+echo '</br>Количество элементов до первого отрицательного числа = '.$count.'</br>';
+echo 'Сумма нечетных элементов после последнего отрицательного числа = '.$sum.'</br>';
