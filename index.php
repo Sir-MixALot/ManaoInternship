@@ -1,9 +1,9 @@
 <?php
 //task 1.29
 
-$n=12345678;
-$m=20;
-$k=33;
+$n=7000;
+$m=1;
+$k=7;
 $count = 0;
 $changeCounter=0;
 $numberPrototype=0;
@@ -16,11 +16,10 @@ for($i=$n;$m>0;$i++){
     $numberPrototype=$i;
     $nCount = ceil(log($numberPrototype, 10));
     if($nCount>1){
-        if(getNumberSum($numberPrototype)==$k){
+        if(getNumberSum($numberPrototype)==$k && !checkZero($numberPrototype)){
             echo $numberPrototype . ' - нельзя</br>';
         }else{
-            $increaseNumber=getIncreaseNumber($numberPrototype);
-            $increaseNumberPrototype=$increaseNumber;
+            $increaseNumberPrototype=$numberPrototype;
             for($j=$changeCounter;true;$j=checkChangedSum($increaseNumberPrototype,$k,$changeCounter)){
                 if($j==-1){
                     $count++;
@@ -40,7 +39,7 @@ for($i=$n;$m>0;$i++){
 
 function checkChangedSum($number, $k, $kCount)
 {
-    // echo $number.'('.$k.')['.$kCount.']/';
+    echo $number.'('.$k.')['.$kCount.']/';
     global $numberPrototype, $increaseNumberPrototype;
     if((getNumberSum($increaseNumberPrototype)>$k)){
         if(((ceil(log($increaseNumberPrototype,10))>1))){
@@ -78,20 +77,6 @@ function checkChangedSum($number, $k, $kCount)
     }
 }
 
-function getIncreaseNumber($number)
-{
-    $increaseNumber=0;
-    for($x = 1; $x < 10; $x++)
-    {
-        for($y=$number; $y>0; $y=floor($y/10)){
-            if($y%10==$x){
-                $increaseNumber = ($increaseNumber*10)+$x;
-            }
-        }
-    }
-    return $increaseNumber;
-}
-
 function getNumberSum($number)
 {
     $sum = 0;
@@ -99,6 +84,18 @@ function getNumberSum($number)
         $sum +=$i%10;
     }
     return $sum;
+}
+
+function checkZero($number)
+{
+    $zero = false;
+    for($i=$number; $i>0;$i=floor($i/10)){
+        if($i%10==0){
+            $zero = true;
+            break;
+        }
+    }
+    return $zero;
 }
 
 echo '&&&&&&&'.$count;
