@@ -1,23 +1,21 @@
 <?php
 
-//Task 1.1
+//Task 2.6
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
+$A = [1,4,5,7,8,8,9,3];
+echo 'Входящий массив';
+echo '<pre>' . print_r($A, true) . '</pre>';
+$max = 0;
+for($i=0;$i<=count($A)-1;$i++){
+    if($A[$i]>=$max && $A[$i]%2==0){
+        $max = $A[$i];
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
 }
-echo getCount($x, $N, $count);
 
-//
-
+for($i=0;$i<=count($A)-1;$i++){
+    if($A[$i]==$max){
+        $A[$i] = $i;
+    }
+}
+echo 'Выходящий массив';
+echo '<pre>' . print_r($A, true) . '</pre>';
