@@ -1,23 +1,13 @@
 <?php
 
-//Task 1.1
+//Task 2,4
 
-$x = 5;
-$N = 5455;
-$count = 0;
-echo 'Ваше число: ' .$N. '</br>';
-
-function getCount($x, $N, $count)
-{
-    if($N%10 == $x){
-        $count+=1;
+$A=[1,2,3,5,6,8,8,7,7,4,4,4];
+echo '<pre>' . print_r($A, true) . '</pre>';
+$count =0;
+for($i=0;$i<=count($A)-1;$i++){
+    if($A[$i]==$A[$i+1]){
+        $count++;
     }
-    if($N/10>1){
-        return getCount($x, floor($N/10), $count);
-    }
-    echo 'Количество цифр, равных'.$x.': ' . $count;
 }
-echo getCount($x, $N, $count);
-
-//
-
+echo $count;
